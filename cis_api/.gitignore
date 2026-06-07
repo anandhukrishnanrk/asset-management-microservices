@@ -1,0 +1,25 @@
+# MAVEN
+target/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# COMPILED CLASS FILE
+*.class
+
+# LOG FILE
+*.log
+
+# VIRTUAL MACHINE CRASH LOGS
+hs_err_pid*
+
+# OTHERS
+bin/
+.settings/
+.classpath
+.factorypath
+.project
+.idea/
+*.iml

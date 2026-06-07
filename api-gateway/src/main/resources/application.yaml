@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true   # auto routing
+
+      routes:
+
+        - id: asset-api
+          uri: lb://asset-api
+          predicates:
+            - Path=/asset/**
+          filters:
+            - RewritePath=/asset/(?<segment>.*), /asset-api/${segment}
+
+        - id: cis-api
+          uri: lb://cis-api
+          predicates:
+            - Path=/cis/**
+          filters:
+            - RewritePath=/cis/(?<segment>.*), /cis_api/${segment}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

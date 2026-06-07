@@ -1,0 +1,15 @@
+name: Microservices CI on: push: branches: - main jobs: build-discovery: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - name: Setup 
+      Java
+        uses: actions/setup-java@v4 with: distribution: temurin java-version: 17 - name: Build Discovery Server run: | cd discovery-server mvn clean 
+          package -DskipTests
+  build-gateway: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - name: Setup Java uses: actions/setup-java@v4 with: distribution: 
+          temurin java-version: 17
+      - name: Build API Gateway run: | cd api-gateway mvn clean package -DskipTests build-asset: runs-on: ubuntu-latest steps: - uses: 
+      actions/checkout@v4 - name: Setup Java
+        uses: actions/setup-java@v4 with: distribution: temurin java-version: 17 - name: Build Asset API run: | cd asset-api mvn clean package 
+          -DskipTests
+  build-cis: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - name: Setup Java uses: actions/setup-java@v4 with: distribution: temurin 
+          java-version: 17
+      - name: Build CIS API run: | cd cis_api
+          mvn clean package -DskipTests
+

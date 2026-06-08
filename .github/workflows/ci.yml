@@ -12,4 +12,3 @@ name: Microservices CI on: push: branches: - main jobs: build-discovery: runs-on
           java-version: 17
       - name: Build CIS API run: | cd cis_api
           mvn clean package -DskipTests
-
